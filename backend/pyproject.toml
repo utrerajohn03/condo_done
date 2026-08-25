@@ -1,0 +1,13 @@
+[project]
+name = "condo-argo-backend"
+version = "0.1.0"
+description = "ARGO Condominium Management module (condo_) — backend"
+requires-python = ">=3.11,<3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.vercel]
+# app/main.py defines `app = FastAPI(...)` — this tells Vercel's Python runtime
+# where the ASGI app lives, since it's nested under app/ rather than at the repo root.
+entrypoint = "app/main.py"
