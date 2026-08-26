@@ -17,7 +17,7 @@ export default function Login() {
     setLoading(true)
     try {
       await login(email, password)
-      navigate('/maintenance-requests')
+      navigate('/maintenance-requests', { replace: true })
     } catch (err) {
       if (!err.response) {
         setError('Cannot reach the server. Check that the backend is running and VITE_API_BASE is set correctly.')

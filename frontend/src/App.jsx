@@ -13,6 +13,12 @@ function ProtectedRoute({ children }) {
   return children
 }
 
+function GuestRoute({ children }) {
+  const { isAuthenticated } = useAuth()
+  if (isAuthenticated) return <Navigate to="/dashboard" replace />
+  return children
+}
+
 // Second layer of enforcement beyond the sidebar's visibility filter — "Residents
 // must NOT... access administrator, staff, or property manager pages" applies even
 // if someone types the URL directly. The backend's permission checks are still the
@@ -28,7 +34,7 @@ function RoleProtectedRoute({ allowedRoles, children }) {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/maintenance-requests" element={<ProtectedRoute><MaintenanceRequests /></ProtectedRoute>} />
       <Route path="/units" element={
