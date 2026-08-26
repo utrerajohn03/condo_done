@@ -114,7 +114,7 @@ export default function MaintenanceRequests() {
   return (
     <Layout title="Maintenance Requests">
       {toast && (
-        <div className={`fixed top-20 right-6 z-50 rounded-lg px-4 py-2.5 text-sm text-white shadow-lg ${toast.type === 'error' ? 'bg-danger' : 'bg-success'}`}>
+        <div className={`fixed top-20 right-4 left-4 sm:left-auto sm:right-6 z-50 rounded-lg px-4 py-2.5 text-sm text-white shadow-lg ${toast.type === 'error' ? 'bg-danger' : 'bg-success'}`}>
           {toast.message}
         </div>
       )}
@@ -138,7 +138,7 @@ export default function MaintenanceRequests() {
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
-        <div className="flex items-center justify-between p-4 border-b border-gray-100">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border-b border-gray-100 gap-3">
           <div>
             <h2 className="font-semibold text-ink">All Requests</h2>
             <p className="text-xs text-gray-500">Manage unit maintenance tickets</p>
@@ -151,7 +151,7 @@ export default function MaintenanceRequests() {
         </div>
 
         {/* In-page tabs — Argo UI: sub-navigation is tabs, not a nested sidebar */}
-        <div className="flex items-center gap-1 px-4 pt-3">
+        <div className="flex items-center gap-1 px-4 pt-3 overflow-x-auto">
           {[{ key: 'all', label: 'All Requests' }, { key: 'completed', label: 'Completed' }].map((t) => (
             <button
               key={t.key}
@@ -166,7 +166,7 @@ export default function MaintenanceRequests() {
         </div>
 
         {/* Filter bar */}
-        <div className="flex items-center gap-3 p-4 border-b border-gray-100">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-4 border-b border-gray-100">
           <div className="relative flex-1 max-w-xs">
             <i className="bi bi-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
             <input

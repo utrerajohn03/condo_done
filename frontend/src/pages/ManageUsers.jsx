@@ -123,7 +123,7 @@ export default function ManageUsers() {
           )}
         </div>
 
-        <div className="flex items-center gap-1 px-4 pt-3">
+        <div className="flex items-center gap-1 px-4 pt-3 overflow-x-auto">
           {TABS.map((t) => (
             <button
               key={t.key}
@@ -137,7 +137,7 @@ export default function ManageUsers() {
           ))}
         </div>
 
-        <div className="flex items-center gap-3 p-4 border-b border-gray-100">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-4 border-b border-gray-100">
           <div className="relative flex-1 max-w-xs">
             <i className="bi bi-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
             <input
@@ -149,6 +149,7 @@ export default function ManageUsers() {
           </div>
         </div>
 
+        <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left text-gray-500 text-xs uppercase border-b border-gray-100">
@@ -186,6 +187,7 @@ export default function ManageUsers() {
             ))}
           </tbody>
         </table>
+        </div>
 
         <div className="flex items-center justify-between px-4 py-3 text-xs text-gray-500">
           <span>Showing {filtered.length} of {users.length}</span>
