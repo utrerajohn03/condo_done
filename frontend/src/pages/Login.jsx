@@ -19,7 +19,11 @@ export default function Login() {
       await login(email, password)
       navigate('/maintenance-requests')
     } catch (err) {
-      setError(err.response?.data?.detail || 'Invalid email or password.')
+      if (!err.response) {
+        setError('Cannot reach the server. Check that the backend is running and VITE_API_BASE is set correctly.')
+      } else {
+        setError(err.response?.data?.detail || 'Invalid email or password.')
+      }
     } finally {
       setLoading(false)
     }
